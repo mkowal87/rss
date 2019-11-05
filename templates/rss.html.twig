@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RSS reader{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-6 offset-4">
+            <ul>
+                <h3>Top 10 Words in feed</h3>
+            {% for word,count in words %}
+                <li><b>{{ word }}</b> with count of {{ count }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+<h1>RSS FEED</h1>
+
+    {% for entry in rss %}
+        <div class="row">
+            <div class="col-6 offset-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h2>{{ entry.title }}</h2>
+                        <h5>{{ entry.updated }}</h5>
+                        <a href="{{ entry.author.uri }}"> <h6>{{ entry.author.name }}</h6> </a>
+                        <p>{{ entry.summary | raw }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
