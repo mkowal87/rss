@@ -10,6 +10,7 @@
                 <h1 class="text-center">Register</h1>
                     {{ form_start(registrationForm) }}
                     {{ form_row(registrationForm.email) }}
+                    <p id="userEmailCheck"></p>
                     {{ form_row(registrationForm.plainPassword) }}
                     {{ form_row(registrationForm.agreeTerms) }}
                 <button class="btn btn-primary btn-block">Register</button>
@@ -19,4 +20,42 @@
     </div>
 </div>
 
+
+
+    <!-- jQuery is necessary -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#registration_form_email").keyup(function() {
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#userEmailCheck").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search_user') }}",
+                        data: {
+                            'email' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            if (value==$(that).val()) {
+                                var result = JSON.parse(msg);
+                                var cssClass = 'text-success';
+                                if (result.status == false){
+                                    var cssClass = 'text-danger';
+                                }
+                                entitySelector.append('<span class="'+cssClass+'">'+result.text+'</span>');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}
