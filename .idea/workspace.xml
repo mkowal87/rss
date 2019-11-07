@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="484329f7-f8c5-496f-80aa-9c793347f058" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/LiveSearchController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Handlers/ExtractWordsHandlerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Handlers/ExtractWordsHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Handlers/ExtractWordsHandler.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +140,7 @@
   <component name="ProjectId" id="1TATihbd6T2ZEEWlgq0OsbdJTFr" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -168,7 +170,8 @@
       <updated>1572902028088</updated>
       <workItem from="1572902029303" duration="8753000" />
       <workItem from="1572979677871" duration="15817000" />
-      <workItem from="1573079090756" duration="4186000" />
+      <workItem from="1573079090756" duration="7555000" />
+      <workItem from="1573149503183" duration="626000" />
     </task>
     <servers />
   </component>

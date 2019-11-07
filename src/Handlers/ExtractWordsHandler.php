@@ -31,20 +31,31 @@ class ExtractWordsHandler
     }
 
     /**
-     * @param array $matchWords
-     * @param int $limit
-     * @return array
+     * @param $string
+     * @return string
      */
-    protected function getKeyWords(array $matchWords, int $limit = 10) : array
+    protected function reduceSigns(string $string) : string
     {
-        $wordCount = str_word_count( implode(" ", $matchWords) , 1);
-        $frequency = array_count_values($wordCount);
-        arsort($frequency);
-
-        $keywords = array_slice($frequency, 0, $limit);
-        return $keywords;
+        $string = preg_replace('/ss+/i', '', $string);
+        $string = strip_tags($string);
+        $string = trim($string);
+        $string = preg_replace('/[^a-zA-Z -]/', '', $string);
+        $string = strtolower($string);
+        return $string;
     }
 
+    /**
+     * @param $entries
+     * @return string
+     */
+    protected function getSummariesString($entries) : string
+    {
+        $string = '';
+        foreach ($entries as $entry){
+            $string .= $entry->summary;
+        }
+        return $string;
+    }
     /**
      * @param string $string
      * @return array
@@ -62,30 +73,21 @@ class ExtractWordsHandler
         return $matchWords;
     }
 
-    /**
-     * @param $entries
-     * @return string
-     */
-    protected function getSummariesString($entries) : string
-    {
-        $string = '';
-        foreach ($entries as $entry){
-            $string .= $entry->summary;
-        }
-        return $string;
-    }
 
     /**
-     * @param $string
-     * @return string
+     * @param array $matchWords
+     * @param int $limit
+     * @return array
      */
-    protected function reduceSigns(string $string) : string
+    protected function getKeyWords(array $matchWords, int $limit = 10) : array
     {
-        $string = preg_replace('/ss+/i', '', $string);
-        $string = strip_tags($string);
-        $string = trim($string);
-        $string = preg_replace('/[^a-zA-Z -]/', '', $string);
-        $string = strtolower($string);
-        return $string;
+        $wordCount = str_word_count( implode(" ", $matchWords) , 1);
+        $frequency = array_count_values($wordCount);
+        arsort($frequency);
+
+        $keywords = array_slice($frequency, 0, $limit);
+        return $keywords;
     }
+
+
 }
